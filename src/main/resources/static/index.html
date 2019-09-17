@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>跨域测试</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.ajax({
+                    //url:"http://10.10.51.225:8080/user/1",
+                    url:"http://127.0.0.1:1997/user/1",
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Access-Token", "gjf");
+                        //request.setRequestHeader("Access-Ken", "gjf");
+                    },
+                    success:function(result){
+                        $("#re").html(JSON.stringify(result));
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button>获取内容</button>
+</br>
+<span id="re">
+
+</span>
+
+</body>
+</html>
